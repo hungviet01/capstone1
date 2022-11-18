@@ -1,0 +1,31 @@
+<div class="wrapper">
+    <div class="container box bg-white">
+        <span>Giỏ hàng của tôi</span>
+        <div class="w-100">
+            <div class="d-flex justify-content-between mb-3">
+                <b class="align-self-end">Tổng hóa đơn: {{ (totalBill || 0) | currency:'VND' }}</b>
+                <app-cart-form-search
+                    class="col-md-8"
+                    [searchAfterInit]="true" 
+                    (search)="ngOnSearch($event)"
+                ></app-cart-form-search>
+                <button class="align-self-end" (click)="payment()">Thanh toán</button>
+            </div>
+            <app-core-table
+                class="w-100 d-flex"
+                style="height: 500px"
+                [rowHeight]="100"
+                [columns]="columns"
+                [rows]="rowDatas"
+                [context]="this"
+
+                (afterInittable)="afterTableInit($event)"
+            ></app-core-table>
+            <app-pagination
+                [paginator]="paginator"
+                (paginate)="ngOnSearch(null)"
+            ></app-pagination>
+            
+        </div>
+    </div>
+</div>

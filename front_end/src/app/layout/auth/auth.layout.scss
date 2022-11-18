@@ -1,0 +1,18 @@
+:host ::ng-deep {
+    .title {
+        text-transform: uppercase;
+        color: var(--button-background);
+        font-weight: bold;
+        margin-bottom: 0;
+    }
+
+    label, a {
+        color: #868e96;
+    }
+}
+
+.wrapper {
+    background-image: url(/assets/images/background-login.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}

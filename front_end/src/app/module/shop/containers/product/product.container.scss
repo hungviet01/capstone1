@@ -1,0 +1,36 @@
+:host ::ng-deep {
+    @media (min-width: 1200px) {
+        .container {
+            max-width: 1140px;
+        }
+    }
+}
+
+.wrapper {
+    background: #f2f2f2;
+
+    .product-wrapper {
+        > span:first-child {
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            padding: 10px;
+            background-color: #001489 !important;
+            text-transform: uppercase;
+            width: 100%;
+            display: inline-block;
+        }
+
+        .product-container {
+            display: flex;
+            flex-wrap: wrap;
+            background: white;
+
+            app-product-card {
+                border-right: 1px solid #e6e6e6;
+                border-bottom: 1px solid #e6e6e6;
+                background: white;
+            }
+        }
+    }
+}

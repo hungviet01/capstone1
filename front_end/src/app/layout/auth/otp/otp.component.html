@@ -1,0 +1,11 @@
+<form class="row flex-column gap-3" [formGroup]="formGroup" (submit)="submit()">
+    <div class="d-flex flex-column">
+        <label>Mã kích hoạt</label>
+        <input class="nice-input" formControlName="otp" placeholder="Nhập mã kích hoạt" />
+    </div>
+
+    <div>
+        <button class="w-100">Xác nhận</button>
+        <button type="button" class="w-100 text-dark bg-transparent" (click)="reSendMail()">Gửi lại</button>
+    </div>
+</form>

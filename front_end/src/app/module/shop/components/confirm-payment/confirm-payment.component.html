@@ -1,0 +1,68 @@
+<div>
+    <div class="modal-header">
+        <span class="h4">Xác nhận mua hàng</span>
+    </div>
+    <div>
+        <form *ngIf="formGroup" class="p-3 d-flex flex-column gap-2" [formGroup]="formGroup">
+            <div>
+                <b>Tổng hóa đơn: {{ totalBill | currency:'VND' }}</b>
+            </div>
+            <div class="d-flex flex-column">
+                <label class="required">Tên người mua</label>
+                <input class="nice-input" placeholder="Nhập tên người mua hàng" formControlName="fullName" />
+                <ng-container
+                    [ngTemplateOutlet]="errorTmp"
+                    [ngTemplateOutletContext]="{
+                        control: formGroup.get('fullName'),
+                        messageRequired: 'Tên người mua không được để trống'
+                    }"
+                ></ng-container>
+            </div>
+
+            <div class="d-flex flex-column">
+                <label class="required">Địa chỉ nhận hàng</label>
+                <input class="nice-input" placeholder="Nhập địa chỉ nhận hàng" formControlName="address" />
+                <ng-container
+                    [ngTemplateOutlet]="errorTmp"
+                    [ngTemplateOutletContext]="{
+                        control: formGroup.get('address'),
+                        messageRequired: 'Địa chỉ nhận hàng không được trống'
+                    }"
+                ></ng-container>
+            </div>
+
+            <div class="d-flex flex-column">
+                <label class="required">Số điện thoại</label>
+                <input class="nice-input" placeholder="Nhập số điện thoại" formControlName="phone" />
+                <ng-container
+                    [ngTemplateOutlet]="errorTmp"
+                    [ngTemplateOutletContext]="{
+                        control: formGroup.get('phone'),
+                        messageRequired: 'Số điện thoại không được để trống',
+                        messagePattern: 'Số điện thoại không đúng định dạng'
+                    }"
+                ></ng-container>
+            </div>
+
+            <div class="d-flex align-items-center gap-2">
+                <input type="checkbox" id="checkbox" (change)="useSessionUser($event)" />
+                <label for="checkbox">Dùng thông tin của user đăng nhập</label>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer justify-content-center">
+        <button (click)="submit()">Xác nhận</button>
+        <button class="cancel" (click)="activeModal.close()">Hủy bỏ</button>
+    </div>
+</div>
+
+<ng-template #errorTmp let-control="control" let-messageRequired="messageRequired" let-messagePattern="messagePattern">
+    <div *ngIf="control.invalid && (control.touched || control.dirty)">
+        <div *ngIf="control.errors.required" class="error-validate">
+            {{ messageRequired }}
+        </div>
+        <div *ngIf="control.errors.pattern" class="error-validate">
+            {{ messagePattern }}
+        </div>
+    </div>
+</ng-template>

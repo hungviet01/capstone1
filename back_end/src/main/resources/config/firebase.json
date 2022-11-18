@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "football-media-store",
+  "private_key_id": "c4d6618d0e219c1d20bc6041d7693012cbc47c7e",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCo821ZbtU5IGIX\nXU1PPEScHhSxBgnPb4+ykkulbm9KK8k6HfiLYeCwvuXWV66Qt1+ETN3khnacAOtk\nmYrk/VAI1+VnuDHcmkl5X+j9vY973vyXHpnERH3HnlBg3l6N1Zzz7Ju0JlHnS8Ph\np4PMl3VjdmCP0CGYDLjFJngnCTRYzEKwgteRG74FUYAA4cDSyEnu/D6AlzRhDRiB\npnqd2z4/RTDeYX9fblOubc8bikcHid6G183pO8zqAEhroV5e3hPvlmGmXBFqRQqU\nCH8y3U9V4/3J8IcvxUFV1e5chfu0RIYbO0c9aV4KacB6+qdHOe7Ue1cyw30miDaa\ndc6FgSb3AgMBAAECggEAJIGdAjMZraNarrPBbbqXFKjHTc0BN6pigXJtGAz5zSwS\n6hTpzKxUkbxeC2ec17ZX1E2LsMKBRIpKUs1+nqZBsfd8oWHCnGlWMPzRamqYY2q2\nZ6z8CtXF2+lQcu35vmoG5QoeRtn03qaXZ937c6zSd7BvgwO1DpbJIgiC8+RgRENc\nlatRmkEJB6Li8NZhiU4aOaAB4VnaKR5IzFi1CapcfaLdH12gTTqwhhM+b1+wthQ4\nDinc5kAqJSr7YAvfpiN5wWzHSkKmMHpCALL1ERX+CRUsGXHsxZokJE/2PLKJRPZs\n4ZFMYI1VsinKnI5qELhOvOVTDIY3vRQN7SF6rr0VeQKBgQDfgJeAVZe1MS0fPn9r\nlLzqzRiIN6EWr4Ud7mlY/Y5gggjg2eN0Ah5A+sJ3H3Pm146PZrSE+fYRNk7w45PA\nH9bnoGlTw+BobP0wf5nsMCv0BIJXcppyXbh9O/hvrZNxxtaJh3RPDY8mHq3UABvM\nNpqZTEqb162mYTXKyqRCqAOx/QKBgQDBhEWrsySrOkiF7qtAjIbaAyKKmj59hkfu\nPBOU4jRsEOAQ2XjA7DM1Dc88rREmUxJtnavzu1oLp3OmjJFydiUhQ/nmL2Me0Xz0\nsO6tjEgyIqDh9/5PQa6V0Elfk972Crih/UtRdTjjMvzvh2FCBAPybPtr3tBFT7F+\nB+gcYBalAwKBgQCsgfxtuaLW35YMP5jp2GvYb2U3/nf/oooEiDgXz91M8BEaPBMr\nP1dKoEHo4AX9bvNCC+vZl3Ut49UaaQ1phSnCrjWdydozv6vM+zA69RN3zOMty+8Z\nxuzW/KrMyBS+BNMiY8KKIdUTfyp8L3lFLgA1woTztIz7lpyGYdJXAIeZoQKBgEq9\nq6sFJcR8XkZcSAhGPk81psGhkUEp+94nleiK9XRHkELxu5HHqH91NfVZYqZKr3Nm\n0mLwmXam1iQdZo+u0ehnOL2Oz9m3T2uyanzdEYVLmpesEKzL0YJLUAt6MUMWIPlv\nuwdbHv2hU8+vmgDFTED1lqWzCP28KfFjXGKZOiXBAoGBALU+RjVlQutxIT9Lk03E\nr8RhtgZIvkan/vgdacErUuSUR/ZhQwE8YCNAjldDXdLovqC6GTeemErc3BAuRKup\nY4EUGIxm4KydQ66+nXf/Zvc9Ukqp76DzSZY5VOpONZvuI3SyD0NWzdEuQtWlkVwH\nN+irlMVdhf7uA9F0oFfxN6F9\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-giprh@football-media-store.iam.gserviceaccount.com",
+  "client_id": "114871680306577103326",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-giprh%40football-media-store.iam.gserviceaccount.com"
+}

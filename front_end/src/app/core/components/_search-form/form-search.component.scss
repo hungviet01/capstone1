@@ -1,0 +1,11 @@
+:host ::ng-deep {
+    .ng-option-label,
+    .ng-value-label {
+        font-size: 12px;
+    }
+}
+
+form {
+    box-shadow: #969ea633 0px 0px 24px;
+    padding: 20px;
+}

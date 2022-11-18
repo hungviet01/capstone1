@@ -1,0 +1,115 @@
+:host ::ng-deep {
+    @media (min-width: 1200px) {
+        .container {
+            max-width: 1140px;
+        }
+    }
+
+    .box {
+        > span {
+            margin-bottom: 20px;
+        }
+    }
+}
+
+.wrapper {
+    background: #f2f2f2;
+
+    .price {
+        color: rgba(var(--bs-danger-rgb), 1);
+        font-weight: 600;
+        font-size: 20px;
+    }
+
+    .uuDai {
+        > span:first-child {
+            font-weight: bold;
+            font-size: 13px;
+            background: #f6f6f6;
+            padding: 5px 10px;
+            display: inline-block;
+            width: 100%;
+        }
+
+        ul {
+            list-style: none;
+            border: 1px solid #f1f1f1;
+            padding-top: 10px;
+            padding-bottom: 10px;
+    
+            > li {
+                position: relative;
+                font-size: 13px;
+    
+                &::before {
+                    content: "\f058";
+                    position: absolute;
+                    left: -20px;
+                    top: -1px;
+                    color: #3fb846;
+                    font-family: Font Awesome\ 5 Free;
+                    font-size: 13px;
+                    font-weight: 900;
+                }
+            }
+        }
+    }
+    
+    .size-wrapper {
+        > span:first-child {
+            font-weight: bold;
+            font-size: 12px;
+        }
+
+        .size-container {
+            display: flex;
+            gap: 10px;
+
+            .size {
+                width: 36px;
+                height: 28px;
+                color: white;
+                background: #3a2150;
+
+                &.active {
+                    background: #feb312;
+                    border: 1px solid #3a2150;
+                }
+            }
+        }
+
+        
+    }
+
+    .policies {
+        > div {
+            border: 1px solid #eee;
+            padding: 5px 0 5px 5px;
+        }
+
+        img {
+            width: 30px;
+            height: 30px;
+        }
+
+        span {
+            color: #282800;
+            text-transform: uppercase;
+            font-size: 12px;
+        }
+    }
+
+    .button {
+        font-size: 15px; 
+        padding: 5px 8px;
+        height: 60px;
+        color: white;
+        font-size: 15px;
+
+        > div { font-size: 12px; }
+
+        &-address {
+            background: #001489;
+        }
+    }
+}

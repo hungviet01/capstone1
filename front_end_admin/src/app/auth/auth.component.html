@@ -1,0 +1,49 @@
+<div class="bg-gradient-primary overflow-hidden vh-100">
+    <div>
+        <div class="row justify-content-center">
+
+            <div class="col-xl-10 col-lg-12 col-md-9">
+
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                        <div class="row" style="min-height: 500px;">
+                            <div class="col-lg-6 d-none d-lg-flex flex-column align-items-center justify-content-center py-4" style="gap: 10px">
+                                <span class="h4 font-weight-bold">ĐĂNG NHẬP HỆ THỐNG</span>
+                                <span class="font-weight-bolder">QUẢN LÝ FFMS</span>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h1 class="h4 text-gray-900 mb-4">Xin chào</h1>
+                                    </div>
+                                    <form class="user d-flex flex-column gap-20" [formGroup]="formGroup" (submit)="submit()">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control form-control-user" formControlName="username" placeholder="Nhập tên đăng nhập">
+                                            <div *ngIf="(getControl.username.dirty || getControl.username.touched) && getControl.username.invalid">
+                                                <div *ngIf="getControl.username.errors.required" class="error-validate">
+                                                    Tên tài khoản không được trống!
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control form-control-user" formControlName="password" placeholder="Nhập mật khẩu">
+                                            <div *ngIf="(getControl.password.dirty || getControl.password.touched) && getControl.password.invalid">
+                                                <div *ngIf="getControl.password.errors.required" class="error-validate">
+                                                    Mật khẩu không được trống!
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-primary btn-user btn-block">
+                                            Đăng nhập
+                                        </button>
+                                    </form>
+                                    <hr>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar" th:object="${#session.getAttribute('USER_SESSION_LOGGED_IN')}">
+    <a class="sidebar-brand align-items-center justify-content-center d-none d-md-flex">
+        <div th:if="*{idRole == 1}" class="sidebar-brand-text mx-3">ADMIN</div>
+    </a>
+    <div class="d-flex d-md-none justify-content-center">
+        <img style="width: 54px; height: 54px;" th:src="@{/images/logo2.png}"/>
+    </div>
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <div id="admin-sidebar">
+        <div class="sidebar-heading">Chức năng chính</div>
+
+        <li class="nav-item cursor-pointer" *ngFor="let item of menu$">
+            <a class="nav-link d-flex justify-content-between" [routerLinkActive]="'active'" [routerLink]="item.page" (click)="collapse(item)">
+                <div>
+                    <i *ngIf="item.icon" [class]="item.icon"></i>
+                    {{item.name}}
+                </div>
+                <div *ngIf="item.children && item.children.length > 0" class="animation" [class.arrow-expanded]="item.isExpanded">
+                    <i class="fas fa-angle-right"></i>
+                </div>
+            </a>
+        </li>
+        <hr class="sidebar-divider">
+    </div>
+</ul>

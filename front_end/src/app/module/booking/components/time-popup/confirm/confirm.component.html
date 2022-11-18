@@ -1,0 +1,31 @@
+<div>
+    <div class="modal-header">
+        <h4>Xác nhận</h4>
+    </div>
+    <div class="modal-body">
+        <h5 class="fw-bold">Thông tin sân: </h5>
+        <div class="d-flex flex-column gap-2">
+            <span>Tên sân: <b>{{ stadium.name }}</b></span>
+            <span>Loại sân: <b>{{ time.name }}</b></span>
+            <span>Thời gian: <b>{{ time.startTime }}-{{ time.endTime }} &ensp; {{ date | date:'dd-MM-yyyy'  }}</b></span>
+            <span>Giá: <b>{{ time.price | currency:'VND' }}</b></span>
+            
+            <span>
+                <input id="1" type="checkbox" [(ngModel)]="isFindCompetitor" />
+                <label for="1" class="ms-2">Tìm đối thủ</label>
+            </span>
+        </div>
+        <div class="separator my-3"></div>
+        <h5 class="fw-bold">Thông tin người đăng ký</h5>
+        <div class="d-flex flex-column gap-2">
+            <span>Tên đăng nhập: <b> {{ currentUser.username }} </b></span>
+            <span>Họ và tên: <b> {{ currentUser.fullName }} </b></span>
+            <span>Email: <b> {{ currentUser.email }} </b></span>
+            <span>Số điện thoại: <b> {{ currentUser.phone }} </b></span>
+        </div>
+    </div>
+    <div class="modal-footer d-flex justify-content-center">
+        <button (click)="submit()">Xác nhận</button>
+        <button class="cancel" (click)="activeModal.close()">Hủy bỏ</button>
+    </div>
+</div>

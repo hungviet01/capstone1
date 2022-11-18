@@ -1,0 +1,11 @@
+<div class="row">
+    <app-stadium-card
+        *ngFor="let stadium of stadiumList"
+        class="col-6 p-2"
+        [ngClass]="colClass"
+        [stadium]="stadium"
+        [actionTemplate]="actionInCard"
+
+        (click)="clickableCard && showDetail(stadium)"
+    ></app-stadium-card>
+</div>

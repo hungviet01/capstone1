@@ -1,0 +1,38 @@
+<div>
+    <div class="modal-header">
+        <span class="h3">Xác nhận mua hàng</span>
+    </div>
+    <div class="modal-body d-flex flex-column gap-2">
+        <form [formGroup]="formGroup" class="row">
+            <div *ngIf="listSize?.length" class="col-md-6 d-flex flex-column">
+                <label class="required">Chọn size: </label>
+                <ng-select 
+                    placeholder="Chọn size"
+                    bindLabel="name"
+                    bindValue="id"
+                    formControlName="sizeId"
+
+                    [items]="listSize"
+                    [searchable]="false"
+                    [clearable]="false"
+                ></ng-select>
+            </div>
+            <div class="col-md-6 d-flex flex-column">
+                <label>Số lượng</label>
+                <app-quantity-action 
+                    [maxQuantity]="maxQuantity"
+                    [minQuantity]="1"
+                    [defaultValue]="1"
+                    (change)="formGroup.get('quantity').setValue($event)"
+                ></app-quantity-action>
+            </div>
+        </form>
+        <div class="d-flex justify-content-end mt-3">
+            <b>Tổng tiền: {{ (formGroup.get('quantity').value * price ) | currency:'VND'}}</b>
+        </div>
+    </div>
+    <div class="modal-footer justify-content-center">
+        <button (click)="submit()">Xác nhận</button>
+        <button class="cancel" (click)="cancel()">Hủy bỏ</button>
+    </div>
+</div>

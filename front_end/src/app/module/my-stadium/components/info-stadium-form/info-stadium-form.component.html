@@ -1,0 +1,94 @@
+<form class="d-flex flex-column gap-2" [formGroup]="formGroup">
+    <div class="row">
+        <div class="col-md-6 d-flex flex-column">
+            <label class="required">Tên sân</label>
+            <input class="nice-input" formControlName="name" />
+            <ng-container
+                [ngTemplateOutlet]="requiredValidateMessage"
+                [ngTemplateOutletContext]="{
+                    message: 'Tên sân không được trống', 
+                    control: formControl.name
+                }"
+            ></ng-container>
+        </div>
+    
+        <div class="col-md-6 d-flex flex-column">
+            <label class="required">Địa chỉ (cụ thể)</label>
+            <input class="nice-input" formControlName="address" />
+            <ng-container
+                [ngTemplateOutlet]="requiredValidateMessage"
+                [ngTemplateOutletContext]="{
+                    message: 'Địa chỉ không được trống', 
+                    control: formControl.address
+                }"
+            ></ng-container>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <label class="required">Tỉnh/Thành phố</label>
+            <ng-select 
+                placeholder="Chọn tỉnh/thành phố"
+                bindValue="id"
+                bindLabel="name"
+                formControlName="provinceId"
+
+                [items]="provinceList"
+            ></ng-select>
+            <ng-container
+                [ngTemplateOutlet]="requiredValidateMessage"
+                [ngTemplateOutletContext]="{
+                    message: 'Tỉnh/Thành phố không được trống', 
+                    control: formControl.provinceId
+                }"
+            ></ng-container>
+        </div>
+
+        <div class="col-md-6">
+            <label class="required">Quận/huyện</label>
+            <ng-select 
+                placeholder="Chọn quận/huyện"
+                bindValue="id"
+                bindLabel="name"
+                formControlName="districtId"
+
+                [items]="districtList"
+            ></ng-select>
+            <ng-container
+                [ngTemplateOutlet]="requiredValidateMessage"
+                [ngTemplateOutletContext]="{
+                    message: 'Quận/huyện không được trống', 
+                    control: formControl.districtId
+                }"
+            ></ng-container>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <label class="required">Ảnh đại diện</label>
+            <app-file-inputer
+                [previewImage]="true"
+                [control]="formGroup.get('avatarFile')"
+                [oldData]="oldData?.avatar ? [oldData.avatar] : null"
+                (delete)="ngOnDeleteAvatarFile()"
+            ></app-file-inputer>
+            <ng-container
+                [ngTemplateOutlet]="requiredValidateMessage"
+                [ngTemplateOutletContext]="{
+                    message: 'Ảnh đại diện không được trống', 
+                    control: formControl.avatarFile
+                }"
+            ></ng-container>
+        </div>
+    </div>
+</form>
+
+<ng-template #requiredValidateMessage let-message="message" let-control="control">
+    <div *ngIf="(control.dirty || control.touched) && control.invalid">
+        <div *ngIf="control.errors?.required" class="error-validate">
+            {{message}}
+        </div>
+    </div>
+</ng-template>

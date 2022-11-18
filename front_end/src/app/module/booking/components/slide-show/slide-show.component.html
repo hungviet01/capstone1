@@ -1,0 +1,10 @@
+<div >
+    <div>
+        <img class="w-100" [src]="currentImage" />
+    </div>
+    <div class="d-flex justify-content-center my-3">
+        <div >
+            <img class="cursor-pointer" *ngFor="let img of images" [src]="img" (click)="currentImage = img" />
+        </div>
+    </div>
+</div>

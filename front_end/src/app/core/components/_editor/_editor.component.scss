@@ -1,0 +1,11 @@
+:host ::ng-deep {
+    .ck-editor__editable_inline {
+        min-height: 300px;
+        max-height: 300px;
+        overflow: auto;
+
+        p {
+            margin-bottom: 0;
+        }
+    }
+}

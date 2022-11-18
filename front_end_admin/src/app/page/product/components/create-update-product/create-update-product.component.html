@@ -1,0 +1,147 @@
+<div>
+    <div class="d-flex justify-content-between">
+        <h2 mat-dialog-title class="mb-0" *ngIf="!data.product">Thêm mới sản phẩm</h2>
+        <h2 mat-dialog-title class="mb-0" *ngIf="data.product && !data.product?.disabled">Cập nhật sản phẩm</h2>
+        <h2 mat-dialog-title class="mb-0" *ngIf="data.product && data.product?.disabled">Xem chi tiết sản phẩm</h2>
+        <span mat-dialog-close class="font-size-30">&times;</span>
+    </div>
+    <form [formGroup]="formGroup" (submit)="submit()">
+        <mat-dialog-content class="d-flex flex-column gap-20">
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="required">Tên sản phẩm</label>
+                    <input id="name" formControlName="name" class="form-control" placeholder="Nhập tên sản phẩm"/>
+                    <div *ngIf="(getControl.name.dirty || getControl.name.touched) && getControl.name.invalid">
+                        <div *ngIf="getControl.name.errors.required" class="error-validate">
+                            Tên sản phẩm không được trống!
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="required">Giá sản phẩm</label>
+                    <input id="price" formControlName="price" type="number" class="form-control" placeholder="Nhập giá sản phẩm" />
+                    <div *ngIf="(getControl.price.dirty || getControl.price.touched) && getControl.price.invalid">
+                        <div *ngIf="getControl.price.errors.required" class="error-validate">
+                            Giá sản phẩm không được trống!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="required">Loại sản phẩm</label>
+                    <ng-select
+                        [items]="data.categoryList"
+                        bindLabel="name"
+                        bindValue="id"
+                        placeholder="Chọn loại sản phẩm"
+                        formControlName="categoryId"
+                    ></ng-select>
+                    <div *ngIf="(getControl.categoryId.dirty || getControl.categoryId.touched) && getControl.categoryId.invalid">
+                        <div *ngIf="getControl.categoryId.errors.required" class="error-validate">
+                            Loại sản phẩm không được trống!
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="required">Trạng thái</label>
+                    <ng-select
+                        [items]="status"
+                        [clearable]="false"
+                        [searchable]="false"
+                        bindLabel="label"
+                        bindValue="id"
+                        placeholder="Chọn trạng thái"
+                        formControlName="status"
+                    ></ng-select>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="required">Số lượng</label>
+                    <input class="form-control" formControlName="quantity" min="1" type="number" />
+                    <div *ngIf="(getControl.quantity.dirty || getControl.quantity.touched) && getControl.quantity.invalid">
+                        <div *ngIf="getControl.quantity.errors.required" class="error-validate">
+                            Số lượng sản phẩm không được trống!
+                        </div>
+                        <div *ngIf="getControl.quantity.errors.min" class="error-validate">
+                            Số lượng sản phẩm phải lớn hơn 0
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="required">Ảnh đại diện</label>
+                    <input type="file" id="file" class="d-none" (change)="onUploadImage($event, true)"/>
+                    <div *ngIf="formGroup.get('avatarFile').invalid && (formGroup.get('avatarFile').touched || formGroup.get('avatarFile').dirty)">
+                        <div *ngIf="formGroup.get('avatarFile').errors.required" class="error-validate">
+                            Ảnh đại diện không được trống.
+                        </div>
+                    </div>
+                    <div>
+                        <label *ngIf="!avatar" for="file" class="text-primary cursor-pointer">Tải ảnh lên</label>
+                        <div *ngIf="avatar" class="position-relative">
+                            <span class="time-close position-absolute text-white" style="z-index: 100; top: 10px; right: 10px;" (click)="onDeleteAvatar()">&times;</span>
+                            <img class="w-100 position-absolute" style="max-height: 270px;" [src]="avatar | safe:'resourceUrl'" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <label>Size</label>
+                    <div class="gap-20 d-flex flex-column" formArrayName="sizes">
+                        <div class="row" *ngFor="let size of sizes.controls; index as i " [formGroupName]="i">
+                            <div class="col-md-5"> 
+                                <input formControlName="name" class="form-control" placeholder="Nhập size" /> 
+                                <div *ngIf="(size.get('name').dirty || size.get('name').touched) && size.get('name').invalid">
+                                    <div *ngIf="size.get('name').errors.required" class="error-validate">
+                                        Size không được trống!                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-1 align-self-center"> 
+                                <img class="cursor-pointer" style="width: 15px;" src="assets/svg/delete.svg" (click)="deleteSize(i)" />
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="button-add mt-2" (click)="addSize()">Thêm size</button>
+                </div>
+            </div>
+
+            <div class="row">
+                <label>Mô tả:</label>
+                <app-editor [control]="getControl.description"></app-editor>
+            </div>
+
+            <div class="row">
+                <label>Hình ảnh</label>
+                <div class="d-flex">
+                    <div class="mr-4">
+                        <label for="image" class="button-upload-image cursor-pointer"></label>
+                        <input type="file" id="image" multiple="true" class="d-none" (change)="onUploadImage($event)" />
+                    </div>
+                    <div class="image-container">
+                        <div class="image-box" *ngFor="let image of images; index as i">
+                            <span (click)="onDeleteImage(i)">&times;</span>
+                            <img  [src]="image.url | safe:'resourceUrl'" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </mat-dialog-content>
+        <mat-dialog-actions align="center">
+            <button mat-button mat-dialog-close class="btn-close mr-2">Hủy bỏ</button>
+            <button *ngIf="!data.product?.disabled" mat-button class="btn-primary">Lưu lại</button>
+          </mat-dialog-actions>
+    </form>
+</div>

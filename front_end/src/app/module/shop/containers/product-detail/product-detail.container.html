@@ -1,0 +1,98 @@
+<div *ngIf="product" class="wrapper py-4">
+    <div class="container bg-white box">
+        <span>Thông tin sản phẩm: </span>
+        <div class="row w-100 overflow-hidden" style="height: 350px">
+            <div class="col-md-5 d-flex flex-column gap-3">
+                <span class="fw-bold h4">{{ product.name }}</span>
+                <div class="d-flex justify-content-between">
+                    <span class="price">{{ product.price | currency:'VND' }}</span>
+                    <app-rate></app-rate>
+                </div>
+                <div class="uuDai">
+                    <span>ƯU ĐÃI THÊM</span>
+                    <ul class="mb-0">
+                        <li>FREESHIP TOÀN QUỐC HÓA ĐƠN TỪ 500.000</li>
+                        <li>HỖ TRỢ GIAO HỎA TỐC 2h TỐI ĐA 30.000 nội thành Hồ Chí Minh</li>
+                        <li>Đổi trả trong 30 ngày rách da, bể đế</li>
+                        <li>LƯU Ý: CHƯƠNG TRÌNH CHỈ ÁP DỤNG CHO SẢN PHẨM NGUYÊN GIÁ</li>
+                    </ul>
+                </div>
+                <div class="size-wrapper">
+                    <span>Chọn size:</span>
+                    <div class="size-container">
+                        <span *ngFor="let size of productSize$ | async" class="size d-flex justify-content-center align-items-center">
+                            {{ size.name }}
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-5">
+                <img class="w-100" style="height: 350px;" [src]="currentImageShow | safe:'resourceUrl'" />
+            </div>
+
+            <div class="col-md-2 h-100 position-relative overflow-hidden">
+                <i *ngIf="productImage?.length > 3" class="fas fa-chevron-up position-absolute cursor-pointer" style="top: 5px; left: 50px; font-size: 20px; z-index: 100;" (click)="previousImage()"></i>
+                <div class="d-flex flex-column gap-2" style="transition: all .5s;" [style.transform]="'translateY(' + showImageIndex * -88 +'px)'">
+                    <img class="cursor-pointer" style="width: 100px; height: 80px" [src]="product.avatar | safe:'resourceUrl'" (click)="currentImageShow = product.avatar" />
+                    <img *ngFor="let img of productImage" [src]="img.url | safe:'resourceUrl'" 
+                        style="width: 100px; height: 80px"
+                        class="cursor-pointer"
+                        (click)="currentImageShow = img.url"
+                    />
+                </div>
+                <i *ngIf="productImage?.length > 3" class="fas fa-chevron-down position-absolute cursor-pointer" style="top: 320px; left: 50px; font-size: 20px; z-index: 100;" (click)="nextImage()"></i>
+            </div>
+        </div>
+        <div class="w-100">
+            <div class="col-md-5">
+                <div class="mb-2 d-flex gap-2">
+                    <button class="button col-md-6 text-center" (click)="buyProduct()">
+                        ĐẶT MUA ONLINE
+                        <div>Giao hàng tận nơi</div>
+                    </button>
+                    <button class="button button-address col-md-6 text-center">
+                        ĐỊA CHỈ CỬA HÀNG
+                        <div>Xem cửa hàng còn hàng & địa chỉ</div>
+                    </button>
+                </div>
+                <div class="d-flex flex-wrap policies">
+                    <div class="col-md-6">
+                        <img src="assets/icons/original.png" />
+                        <span>CHÍNH HÃNG 100%</span>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="assets/icons/giao-2h.png" />
+                        <span>GIAO HÀNG TOÀN QUỐC</span>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="assets/icons/doi-tra.png" />
+                        <span>ĐỔI TRẢ TRONG 90 NGÀY</span>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="assets/icons/bao-hanh.png" />
+                        <span>BẢO HÀNH TRỌN ĐỜI</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container bg-white box">
+        <span>Mô tả sản phẩm</span>
+        <div class="w-100" [innerHTML]="product.description | safe:'html'"></div>
+    </div>
+
+    <div class="container bg-white box">
+        <span>Sản phẩm tương tự</span>
+        <div class="row w-100">
+            <app-product-card
+                *ngFor="let product of product$ | async"
+                class="col-md-3"
+                style="height: 300px"
+
+                [product]="product"
+            ></app-product-card>
+        </div>
+    </div>
+</div>

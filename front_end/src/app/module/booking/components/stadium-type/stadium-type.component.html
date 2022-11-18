@@ -1,0 +1,28 @@
+<table *ngIf="rows" class="table table-striped">
+    <thead>
+        <tr>
+            <td>Loại sân</td>
+            <td>Thời gian</td>
+            <td>Giá</td>
+        </tr>
+    </thead>
+    <tbody>
+        <ng-container *ngFor="let row of rows">
+            <tr >
+                <td> 
+                    <span>{{ row.name }}</span>
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+            <ng-container>
+                <tr *ngFor="let child of row.children">
+                    <td></td>
+                    <td>{{ child.startTime }} - {{ child.endTime }}</td>
+                    <td class="fw-bold">{{ child.price | currency:'VND' }}</td>
+                </tr>
+            </ng-container>
+        </ng-container>
+        
+    </tbody>
+</table>

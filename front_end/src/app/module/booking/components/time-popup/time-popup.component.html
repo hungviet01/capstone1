@@ -1,0 +1,54 @@
+<div>
+    <div class="modal-header d-flex justify-content-center">
+        <h4 class="mb-0">KẾT QUẢ TÌM KHUNG GIỜ</h4>
+    </div>
+    <div class="modal-body">
+        <ng-container
+            *ngFor="let time of data"
+            [ngTemplateOutlet]="timeContainer"
+            [ngTemplateOutletContext]="{item: time}"
+        ></ng-container>
+
+        <ng-container
+            *ngIf="!data || !data.length"
+            [ngTemplateOutlet]="empty"
+        ></ng-container>
+    </div>
+</div>
+
+<ng-template #timeContainer let-item="item">
+    <span class="fw-bold">{{ item.date | date:'dd-MM-yyyy' }}</span>
+    <ng-container
+        *ngFor="let child of item.children; let i = index"
+        [ngTemplateOutlet]="time"
+        [ngTemplateOutletContext]="{
+            date: item.date, 
+            hasBorder: i < item.children.length - 1, 
+            item: child
+        }"
+    ></ng-container>
+    <ng-container
+        *ngIf="!item.children?.length"
+        [ngTemplateOutlet]="empty"
+    ></ng-container>
+    <div class="time mb-2"></div>
+</ng-template>
+
+<ng-template #time let-item="item" let-hasBorder="hasBorder" let-date="date">
+    <div class="px-3">
+        <div [class.time]="hasBorder" class="d-flex justify-content-between align-items-center py-2">
+            <div>
+                <span>{{ item.name }}</span>
+                <span class="ms-3">{{ item.startTime }} - {{ item.endTime }}</span>
+            </div>
+            <span>{{ item.price | currency:'VND' }}</span>
+            <i (click)="booking(item, date)" class="fas fa-check-square"></i>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #empty>
+    <div class="p-3 text-center">
+        Không có sân trong thời gian này.
+    </div>
+</ng-template>

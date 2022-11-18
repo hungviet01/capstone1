@@ -1,0 +1,17 @@
+<form [formGroup]="formGroup" (submit)="submit()" class="d-flex">
+
+    <div class="col-md-4">
+        <label>Người tạo</label>
+        <input formControlName="username" class="form-control" placeholder="Nhập thông tin người tạo" />
+    </div>
+
+    <div class="col-md-4">
+        <label>Nội dung</label>
+        <input type="date" formControlName="createdDate" class="form-control"/>
+    </div>
+
+    <div class="align-self-end">
+        <button class="btn btn-primary">Tìm kiếm</button>
+    </div>
+
+</form>

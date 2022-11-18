@@ -1,0 +1,27 @@
+@import '../../../../colors.scss';
+
+:host ::ng-deep {
+    .active {
+        color: white;
+    }
+}
+
+.expanded {
+    height: 50px !important;
+}
+
+.h-0 {
+    height: 0;
+}
+
+.animation {
+    transition: all .5s
+}
+
+.nav-item {
+    background: $primary;
+}
+
+.arrow-expanded {
+    transform: rotateZ(90deg);
+}

@@ -1,0 +1,15 @@
+<div class="d-flex flex-column" style="height: 500px;">
+    <div class="modal-header">
+        <h4 class="modal-title">Danh sách đối thủ</h4>
+        <button type="button" class="btn-close" (click)="activeModal.close()"></button>
+    </div>
+    <div class="modal-body">
+        <app-core-table
+            class="w-100"
+            [treeData]="true"
+            [groupHeader]="groupHeader"
+            [columns]="columnDef"
+            [rows]="rowData"
+        ></app-core-table>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+<div>
+    <div class="title-container">
+        <span class="title">DANH SÁCH SẢN PHẨM</span>
+        <app-button-create (onClick)="openCreateUpdate(null)"></app-button-create>
+    </div>
+    <div class="body-container">
+        <app-form-search-product
+            [categoryList]="categoryList"
+            (search)="doSearch(1, $event)"
+        ></app-form-search-product>
+        
+        <ag-grid-angular
+            style="height: 500px;"
+            class="mt-4 ag-theme-alpine"
+            [context]="{parent: this}"
+            [headerHeight]="56"
+            [rowHeight]="56"
+            [rowData]="rowData"
+            [columnDefs]="columnDefs"
+            [tooltipShowDelay]="0"
+
+            (gridSizeChanged)="gridSizeChanged($event)"
+            (gridReady)="onGridReady($event)">
+        </ag-grid-angular>
+
+        <app-pagination
+            [totalRecord]="pagination.totalRecord"
+            [totalPage]="pagination.totalPage"
+            [currentPage]="pagination.currentPage"
+            [dataLength]="pagination.dataLength"
+            [pageSize]="pagination.pageSize"
+            (paginate)="doSearch($event, null)"
+        ></app-pagination>
+    </div>
+</div>

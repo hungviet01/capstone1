@@ -1,0 +1,13 @@
+<div>
+    <div class="d-flex justify-content-between">
+        <h2 mat-dialog-title>{{data.title}}</h2>
+        <span class="time-close" (click)="doClose()">&times;</span>
+    </div>
+    <mat-dialog-content>
+        {{data.message}}
+    </mat-dialog-content>
+    <mat-dialog-actions align="center">
+        <button class="btn-close mr-2" (click)="doClose()">Hủy bỏ</button>
+        <button class="btn-primary" (click)="doAccept()">Chấp nhận</button>
+    </mat-dialog-actions>
+</div>

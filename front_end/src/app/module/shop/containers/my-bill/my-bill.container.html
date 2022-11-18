@@ -1,0 +1,42 @@
+<div class="wrapper">
+    <div class="container box bg-white">
+        <span>Đơn hàng của tôi</span>
+        <div class="w-100 d-flex justify-content-end my-3 align-items-center gap-3">
+            <div class="col-md-3 d-flex align-items-center gap-2">
+                <label>Mã đơn hàng</label>
+                <input placeholder="Nhập mã đơn hàng" class="nice-input flex-grow-1" [(ngModel)]="billCode" />
+            </div>
+            <div class="col-md-3 d-flex align-items-center gap-2">
+                <label>Ngày mua</label>
+                <input type="date" class="nice-input flex-grow-1" [(ngModel)]="buyDate" />
+            </div>
+            <div class="col-md-3 d-flex align-items-center gap-2">
+                <label>Trạng thái</label>
+                <ng-select
+                    class="flex-grow-1"
+                    placeholder="Chọn trạng thái"
+                    [items]="billStatusList"
+                    bindValue="id"
+                    bindLabel="label"
+                    [(ngModel)]="statusBill"
+                ></ng-select>
+            </div>
+            <div class="col-md-2">
+                <button (click)="ngOnSearch()">Tìm kiếm</button>
+            </div>
+        </div>
+        <div class="w-100">
+            <app-core-table
+                class="w-100 d-flex"
+                style="height: 500px"
+                [columns]="columns"
+                [rows]="rowData"
+                [rowSelection]="'multiple'"
+            ></app-core-table>
+            <app-pagination
+                [paginator]="paginator"
+                (paginate)="ngOnSearch()"
+            ></app-pagination>
+        </div>
+    </div>
+</div>

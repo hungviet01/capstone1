@@ -1,0 +1,29 @@
+:host ::ng-deep {
+    .ag-body-viewport::-webkit-scrollbar { width: 0px; }
+    .ag-root-wrapper,
+    .ag-header,
+    .ag-row,
+    .ag-cell { border: none !important; }
+    .ag-icon.ag-icon-menu { display: none !important; }
+
+    .ag-header-cell-text {
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: #8F95B2;
+    }
+
+    .ag-row-odd,
+    .ag-header-row {
+        background: #F4F6FA;
+        box-shadow: inset 0px -1px 0px #edf2f7;
+    }
+
+    .header-text-center {
+        .ag-header-cell-label {
+            justify-content: center;
+        }
+    }
+}

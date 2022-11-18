@@ -1,0 +1,45 @@
+<div class="action-shool position-relative">
+    <div class="cursor-pointer"><i class="fa fa-ellipsis-v"></i></div>
+    <ul class="flex-column">
+        <li class="btn btn-edit" (click)="showBillDetails(billDetails)">
+            <img src="assets/svg/edit.svg"/>
+            Xem chi tiết
+        </li>
+        <li class="btn btn-approve" (click)="onApproveBill()">
+            <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M2.83398 7.56803L6.73908 2.518C6.95131 2.24567 7.02677 1.93082 6.95603 1.61023C6.89472 1.31879 6.7155 1.04169 6.44667 0.831467L5.7911 0.310698C5.22043 -0.143184 4.51298 -0.0954068 4.10738 0.425363L3.66877 0.994387C3.61217 1.06557 3.62632 1.17068 3.69706 1.22802C3.69706 1.22802 4.80539 2.11667 4.82898 2.13578C4.90444 2.20745 4.96103 2.303 4.97518 2.41766C4.99876 2.64222 4.84312 2.85244 4.61203 2.8811C4.50355 2.89543 4.39979 2.86199 4.32433 2.79988L3.15941 1.87301C3.10281 1.83048 3.01792 1.83956 2.97075 1.89689L0.202286 5.48017C0.0230662 5.70472 -0.0382457 5.99616 0.0230662 6.27805L0.376789 7.81169C0.395654 7.89291 0.466398 7.95024 0.551292 7.95024L2.10767 7.93113C2.39065 7.92635 2.65476 7.79736 2.83398 7.56803ZM5.01323 7.09043H7.55107C7.79867 7.09043 8.00006 7.29444 8.00006 7.54527C8.00006 7.79657 7.79867 8.0001 7.55107 8.0001H5.01323C4.76562 8.0001 4.56424 7.79657 4.56424 7.54527C4.56424 7.29444 4.76562 7.09043 5.01323 7.09043Z" fill="#25CBD6"/>
+            </svg>
+            Phê duyệt
+        </li>
+        <li  class="btn btn-delete" (click)="onCancelBill()">
+            <img src="assets/svg/delete.svg" />
+            Từ chối
+        </li>
+    </ul>
+</div>
+
+<ng-template #billDetails>
+    <div>
+        <div class="modal-header">
+            Chi tiết hóa đơn: {{ params.data.code }}
+        </div>
+        <div class="modal-body">
+            <ag-grid-angular
+                style="height: 500px"
+                class="mt-4 ag-theme-alpine"
+                [tooltipShowDelay]="0"
+                [columnDefs]="columnDef"
+                [rowData]="rowData"
+                [headerHeight]="56"
+                [rowHeight]="56"
+
+                (gridColumnsChanged)="gridColumnsChanged($event)"
+                (gridReady)="gridReady($event)"
+            ></ag-grid-angular>
+        </div>
+        <div class="modal-footer justify-content-center">
+            <button class="btn btn-close" (click)="matDialogRef.close()">Đóng</button>
+        </div>
+    </div>
+    
+</ng-template>

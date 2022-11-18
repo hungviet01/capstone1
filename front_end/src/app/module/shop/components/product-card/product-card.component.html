@@ -1,0 +1,10 @@
+<div *ngIf="product" class="w-100 h-100 cursor-pointer" (click)="navigateToDetail(product.id)">
+    <img class="w-100" style="height: 200px;" [src]="product.avatar | safe:'resourceUrl'" />
+    <div class="p-3 d-flex flex-column">
+        <span class="text-truncate fw-bold">{{ product.name }}</span>
+        <div class="d-flex justify-content-between">
+            <div class="price">{{ product.price| currency:'VND' }}</div>
+            <app-rate></app-rate>
+        </div>
+    </div>
+</div>

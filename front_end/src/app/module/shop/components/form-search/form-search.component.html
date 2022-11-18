@@ -1,0 +1,21 @@
+<form [formGroup]="formGroup" (submit)="submitSearch()" class="row w-100">
+    <div class="col-md-4 d-flex flex-column mt-2">
+        <label>Loại sẩn phẩm</label>
+        <ng-select 
+            placeholder="Chọn loại sản phẩm"
+            [items]="categories$ | async"
+            bindLabel="name"
+            bindValue="id"
+            formControlName="categoryId"
+        ></ng-select>
+    </div>
+
+    <div class="col-md-4 d-flex flex-column mt-2">
+        <label>Tên sản phẩm</label>
+        <input class="nice-input" placeholder="Nhập tên sản phẩm" formControlName="productName"/>
+    </div>
+
+    <div class="col-md-4 d-flex justify-content-start align-items-end mt-2">
+        <button>Tìm kiếm</button>
+    </div>
+</form>

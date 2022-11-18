@@ -1,0 +1,14 @@
+div {
+    border-radius: 20px;
+    text-align: start;
+    width: fit-content;
+    height: fit-content;
+    padding: 5px 15px;
+    min-width: 112px;
+    line-height: 20px;
+
+    span {
+        font-weight: 600;
+        line-height: 20px;
+    }
+}

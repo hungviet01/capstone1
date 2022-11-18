@@ -1,0 +1,24 @@
+<div class="d-flex flex-column gap-3">
+    <div class="d-flex align-items-center justify-content-between gap-2 w-100" *ngFor="let control of control.controls; let i = index">
+        <ng-container [formGroup]="control">
+            <div class="d-flex gap-2 align-items-center w-100">
+                <label style="width: 80px;">Tiện ích {{ i + 1 }}</label>
+                <div class="d-flex flex-column w-100">
+                    <input 
+                        class="nice-input flex-grow-1 w-100" 
+                        placeholder="Nhập tên tiện ích {{ i + 1 }}" 
+            
+                        formControlName="name"
+                    />
+                    <div *ngIf="(control.get('name').dirty || control.get('name').touched) && control.get('name').invalid">
+                        <div *ngIf="(control.get('name').errors.required)" class="error-validate">
+                            Tên tiện ích không được trống
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <i class="fas fa-trash text-danger cursor-pointer" (click)="removeOption(i)"></i>
+        </ng-container>
+    </div>
+    <button (click)="addOption()">Thêm tiện ích</button>
+</div>

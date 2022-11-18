@@ -1,0 +1,13 @@
+<div class="container">
+    <app-booking-form-search class="col-md-10 col-12" (search)="ngOnSearch($event)"></app-booking-form-search>
+    <app-pending-request
+        style="height: 400px;"
+        class="w-100 d-flex"
+        [showAction]="true"
+        [stadiumRequest]="data"
+    ></app-pending-request>
+    <app-pagination
+        [paginator]="paginator"
+        (paginate)="ngOnSearch()"
+    ></app-pagination>
+</div>

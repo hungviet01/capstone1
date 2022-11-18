@@ -1,0 +1,23 @@
+label {
+    color: var(--bs-primary);
+    cursor: pointer;
+}
+
+.preview-file {
+    margin-top: 10px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.time-close {
+    top: 5px;
+    right: 5px;
+    background: black;
+    color: white;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}

@@ -1,0 +1,35 @@
+<div>
+    <span class="text-primary cursor-pointer" (click)="openForm(form)">Xem chi tiết</span>
+</div>
+
+<ng-template #form>
+    <div>
+        <h2 mat-dialog-title>Xem chi tiết</h2>
+        <mat-dialog-content>
+            <form [formGroup]="formGroup">
+                <div>
+                    <label>Người gửi</label>
+                    <input class="form-control" formControlName="fullName" />
+                </div>
+
+                <div>
+                    <label>Email</label>
+                    <input class="form-control" formControlName="email" />
+                </div>
+
+                <div>
+                    <label>Số điện thoại</label>
+                    <input class="form-control" formControlName="phone" />
+                </div>
+
+                <div>
+                    <label>Nội dung</label>
+                    <textarea class="form-control" style="height: auto !important;" formControlName="content"></textarea>
+                </div>
+            </form>
+        </mat-dialog-content>
+        <div class="modal-footer justify-content-center">
+            <button class="btn-close" mat-dialog-close>Đóng</button>
+        </div>
+    </div>
+</ng-template>

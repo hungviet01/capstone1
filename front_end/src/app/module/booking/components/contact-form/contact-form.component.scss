@@ -1,0 +1,56 @@
+form {
+    background: var(--button-background);
+    padding: 15px;
+
+    button {
+        background: var(--sub-color);
+        min-width: unset;
+        width: fit-content;
+        padding: 0 20px;
+    }
+}
+
+.social {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    border: 1px solid var(--background);
+    color: var(--background);
+    font-size: 14px;
+
+    > span {
+        justify-self: center;
+        flex-grow: 1;
+    }
+
+    &::before {
+        content: '';
+        background-image: var(--icon-url);
+        background-color: var(--background);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 24px 24px;
+        width: 40px;
+        height: 40px;
+    }
+}
+
+.zalo {
+    --icon-url: url('/assets/icons/svg/zalo.svg');
+    --background: #0180c6;
+}
+
+.facebook {
+    --icon-url: url('/assets/icons/svg/facebook.svg');
+    --background: #3b5898;
+}
+
+.find {
+    --icon-url: url('/assets/icons/svg/find.svg');
+    --background: #28a99a;
+}
+
+.phone {
+    --icon-url: url('/assets/icons/svg/phone.svg');
+    --background: var(--primary-color);
+}

@@ -1,0 +1,74 @@
+<div>
+    <div class="container d-flex flex-column gap-3">
+        <div class="mt-3">
+            <h2 class="label-card">{{ title }}</h2>
+        </div>
+        <form [formGroup]="formGroup" class="row">
+            <div class="col-md-7">
+                <div class="box">
+                    <span>Thông tin sân bóng</span>
+                    <app-info-stadium-form 
+                        class="w-100"
+                        [formGroup]="formGroup"
+                        [oldData]="basicInfo$ | async"
+                    ></app-info-stadium-form>
+                </div>
+        
+                <div class="box">
+                    <span>Mô tả sân bóng</span>
+                    <app-editor class="w-100" [control]="formGroup.get('description')"></app-editor>
+                </div>
+        
+                <div class="box">
+                    <span>Hình ảnh sân bóng</span>
+                    <app-file-inputer
+                        class="w-100"
+                        [previewImage]="true"
+                        [layout]="'row'"
+                        [multiple]="true"
+                        [inputerElement]="inputer"
+                        [control]="formGroup.get('images')"
+                        [oldData]="images"
+
+                        (delete)="deleteStadiumImage($event)"
+                    ></app-file-inputer>
+
+                    <label #inputer class="inputer">
+                        <i class="fas fa-upload"></i>
+                    </label>
+                </div>
+        
+                <div class="box">
+                    <span class="d-flex justify-content-between align-items-center">
+                        <span>Tiện ích</span>
+                        <span 
+                            class="text-danger text-decoration-underline cursor-pointer" 
+                            style="font-size: 12px;"
+                            (click)="clearAllOption()"
+                        >Xóa tất cả</span>
+                    </span>
+                    <app-option-form 
+                        class="w-100"
+                        [control]="formArray"
+                        [oldData]="stadiumOption$ | async"
+                    ></app-option-form>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="box">
+                    <span>Loại sân</span>
+                    <app-type-stadium-form 
+                        class="w-100"
+                        [formGroups]="typeStadium"
+                        [oldData]="stadiumDetail$ | async"
+                    ></app-type-stadium-form>
+                </div>
+            </div>
+        </form>
+        <div class="separator"></div>
+        <div class="d-flex justify-content-center align-items-center gap-2 mb-3">
+            <button (click)="submit()">Lưu lại</button>
+            <button class="cancel" (click)="cancel()">Hủy bỏ</button>
+        </div>
+    </div>
+</div>

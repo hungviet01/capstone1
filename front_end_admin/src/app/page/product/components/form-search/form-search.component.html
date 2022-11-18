@@ -1,0 +1,41 @@
+<form [formGroup]="formGroup" (submit)="submit()" class="d-flex flex-wrap align-items-center">
+
+    <div class="col-md-3">
+        <label>Tên</label>
+        <input 
+            class="form-control" 
+            formControlName="name" 
+            placeholder="Nhập tên sản phẩm"
+        />
+    </div>
+
+    <div class="col-md-3">
+        <label>Loại sản phẩm</label>
+        <ng-select
+            [items]="categoryList"
+            [searchable]="true"
+            [clearable]="true"
+            bindLabel="name"
+            bindValue="id"
+            formControlName="categoryId"
+            placeholder="Chọn loại sản phẩm"
+        ></ng-select>
+    </div>
+
+    <div class="col-md-3">
+        <label>Trạng thái</label>
+        <ng-select
+            [items]="statusList"
+            [searchable]="false"
+            [clearable]="true"
+            bindLabel="label"
+            bindValue="id"
+            formControlName="status"
+            placeholder="Chọn trạng thái sản phẩm"
+        ></ng-select>
+    </div>
+
+    <div class="col-md-2 d-flex justify-content-center align-self-end">
+        <button class="btn btn-primary w-100" type="submit">Tìm kiếm</button>
+    </div>
+</form>

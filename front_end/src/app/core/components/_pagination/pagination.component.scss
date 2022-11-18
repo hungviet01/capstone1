@@ -1,0 +1,15 @@
+:host ::ng-deep {
+
+    .page-item {
+
+        .page-link {
+            color: var(--sub-color) !important;
+            border: 1px solid var(--sub-color) !important;
+        }
+
+        &.active > .page-link {
+            background: var(--sub-color) !important;
+            color: white !important;
+        }
+    }
+}

@@ -1,0 +1,33 @@
+<div>
+    <div class="title-container">
+        <span class="title">DANH SÁCH ĐƠN HÀNG</span>
+    </div>
+    <div class="body-container">
+        <app-form-search-bill
+            (search)="doSearch($event, 1)"
+        ></app-form-search-bill>
+        
+        <ag-grid-angular
+            style="height: 500px;"
+            class="mt-4 ag-theme-alpine"
+            [context]="{parent: this}"
+            [headerHeight]="56"
+            [rowHeight]="56"
+            [rowData]="rowData"
+            [columnDefs]="columnDef"
+            [tooltipShowDelay]="0"
+
+            (gridSizeChanged)="gridSizeChanged($event)"
+            (gridReady)="onGridReady($event)">
+        </ag-grid-angular>
+
+        <app-pagination
+            [currentPage]="pagination.currentPage"
+            [dataLength]="pagination.dataLength"
+            [totalPage]="pagination.totalPage"
+            [totalRecord]="pagination.totalRecord"
+
+            (paginate)="doSearch(null, $event)"
+        ></app-pagination>
+    </div>
+</div>

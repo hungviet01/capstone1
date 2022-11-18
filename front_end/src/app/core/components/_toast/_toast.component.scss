@@ -1,0 +1,17 @@
+:host ::ng-deep {
+  .toast-body {
+    color: white;
+  }
+
+  .success {
+    background-color: rgba(var(--bs-success-rgb), 1) !important;
+  }
+
+  .error {
+    background-color: rgba(var(--bs-danger-rgb), 1) !important;
+  }
+
+  .warning {
+    background-color: rgba(var(--bs-warning-rgb), 1) !important;
+  }
+}

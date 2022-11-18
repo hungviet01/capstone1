@@ -1,0 +1,53 @@
+.button-add {
+    border: 1px dashed #3366FF;
+    height: 40px;
+    color: #3366FF;
+    background: #F3F6FF;
+    border-radius: 4px;
+    padding: 0 20px;
+}
+
+.w-h-100px {
+    width: 100px;
+    height: 100px;
+}
+
+.button-upload-image {
+    @extend .w-h-100px;
+    background: url(../../../../../assets/image/uploadpng.png);
+    background-repeat: no-repeat;
+    background-size: 100px 100px;
+    border-radius: 4px;
+    opacity: .5;
+}
+
+.image-container {
+
+    display: flex;
+    gap: 20px;
+
+    .image-box {
+        position: relative;
+        transition: transform 1s;
+
+        &:hover {
+            transform: scale(2);
+            span {
+                display: block;
+            }
+        }
+
+        span {
+            font-size: 20px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            border-radius: 20px;
+            height: 12px;
+            cursor: pointer;
+            display: none;
+        }
+
+        img {@extend .w-h-100px;}
+    }
+}

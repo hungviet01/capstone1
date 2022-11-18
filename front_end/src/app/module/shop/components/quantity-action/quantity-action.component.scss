@@ -1,0 +1,21 @@
+.amount-container {
+    border: 1px solid #e6e6e6;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    > span:nth-child(1), span:nth-child(3) {
+        width: 30px;
+        display: flex;
+        justify-content: center;
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+    > span:nth-child(2) {
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+    }
+}

@@ -1,0 +1,31 @@
+@import '../../../../../colors';
+
+ul {
+    list-style: none;
+    display: flex;
+}
+
+.result {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.page-container {
+
+    li {
+        width: 32px;
+        height: 32px;
+        background: #FFFFFF;
+        font-size: 12px;
+        cursor: pointer;
+        
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    li.highlight {
+        background: $primary;
+        color: #FFFFFF;
+    }
+}

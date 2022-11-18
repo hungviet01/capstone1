@@ -1,0 +1,11 @@
+:host ::ng-deep {
+    ul {
+        width: 100%;
+        gap: 10px !important;
+        li {
+            border-bottom: 1px solid white;
+            text-align: left;
+            padding: 10px;
+        }
+    }
+}

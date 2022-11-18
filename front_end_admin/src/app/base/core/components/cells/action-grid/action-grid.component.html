@@ -1,0 +1,13 @@
+<div class="action-shool position-relative">
+    <div class="cursor-pointer"><i class="fa fa-ellipsis-v"></i></div>
+    <ul class="flex-column">
+        <li *ngIf="params.ondyDelete != true" class="btn btn-edit" (click)="onEdit()">
+            <img src="assets/svg/edit.svg" />
+            Chỉnh sửa
+        </li>
+        <li *ngIf="params.onlyEdit != true" class="btn btn-delete" (click)="onDelete()">
+            <img src="assets/svg/delete.svg" />
+            Xóa bỏ
+        </li>
+    </ul>
+</div>

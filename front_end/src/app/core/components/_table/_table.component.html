@@ -1,0 +1,41 @@
+<ag-grid-angular
+    *ngIf="!treeData"
+    class="ag-theme-alpine w-100 h-100"
+    [columnDefs]="columns"
+    [rowData]="rows"
+    [headerHeight]="hideHeader ? 0 : 56"
+    [rowHeight]="rowHeight || 64"
+    [tooltipShowDelay]="0"
+    [context]="context"
+    [rowSelection]="rowSelection"
+    [getRowId]="getRowId"
+
+    (rowClicked)="handleRowClick($event)"
+    (gridReady)="gridReady($event)"
+    (gridSizeChanged)="gridSizeChanged($event)"
+></ag-grid-angular>
+
+<ag-grid-angular
+    *ngIf="treeData"
+    class="ag-theme-alpine w-100 h-100"
+    [columnDefs]="columns"
+    [rowData]="rows"
+    [headerHeight]="hideHeader ? 0 : 56"
+    [rowHeight]="rowHeight || 64"
+    [suppressMovableColumns]="true"
+    [domLayout]="domLayout"
+    [tooltipShowDelay]="0"
+
+    [autoGroupColumnDef]="autoGroupColumnDef"
+    [treeData]="treeData"
+    [animateRows]="true"
+    [serverSideInfiniteScroll]="true"
+    [rowModelType]="'serverSide'"
+    [isServerSideGroupOpenByDefault]="isServerSideGroupOpenByDefault"
+    [isServerSideGroup]="isServerSideGroup"
+    [serverSideStoreType]="'partial'"
+    [getServerSideGroupKey]="getServerSideGroupKey"
+
+    (gridReady)="gridReady($event)"
+    (gridSizeChanged)="gridSizeChanged($event)"
+></ag-grid-angular>

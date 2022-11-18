@@ -1,0 +1,41 @@
+<div class="card border-0 overflow-hidden d-flex flex-column cursor-pointer h-100">
+    <div class="position-relative">
+        <img class="w-100" style="height: 200px;" [src]="stadium?.avatar" />
+        <div class="black bg-dark position-absolute top-0 start-0 w-100 h-100" style="opacity: .5;"></div>
+        <div class="position-absolute end-0 bottom-0 mb-2 me-2">
+            <app-rate></app-rate>
+        </div>
+    </div>
+    <div class="d-flex flex-column flex-grow-1 justify-content-between p-3">
+        <div class="d-flex flex-column gap-1">
+            <span class="fw-semibold stadium-name">{{ stadium?.name }}</span>
+            <div class="d-flex justify-content-between">
+                <span>Số sân: <strong>{{ stadium?.totalType }}</strong></span>
+            </div>
+            <span>Giá: <span class="price">{{stadium?.minPrice | currency:'VND'}}</span> - <span class="price">{{stadium?.maxPrice | currency:'VND'}}</span> /Trận</span>
+            <div class="d-flex gap-5">
+                <ng-container 
+                    *ngIf="stadium?.options?.[0]"
+                    [ngTemplateOutlet]="stadiumOption"
+                    [ngTemplateOutletContext]="{item: stadium?.options?.[0]}"
+                ></ng-container>
+    
+                <ng-container 
+                    *ngIf="stadium?.options?.[1]"
+                    [ngTemplateOutlet]="stadiumOption"
+                    [ngTemplateOutletContext]="{item: stadium?.options?.[1]}"
+                ></ng-container>
+            </div>
+        </div>
+        <ng-container
+            [ngTemplateOutlet]="actionTemplate"
+        ></ng-container>
+    </div>
+</div>
+
+<ng-template #stadiumOption let-item="item">
+    <div>
+        <i class="fas fa-check me-2"></i>
+        <span>{{ item.name }}</span>
+    </div>
+</ng-template>

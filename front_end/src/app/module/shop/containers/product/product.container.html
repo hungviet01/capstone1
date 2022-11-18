@@ -1,0 +1,15 @@
+<div class="wrapper py-3">
+  <div class="container d-flex flex-column gap-3">
+    <div *ngFor="let category of category$ | async" class="product-wrapper">
+      <span>{{ category.name }}</span>
+      <div class="product-container">
+        <app-product-card
+			*ngFor="let product of category.products"
+          	class="col-md-3"
+          	style="height: 300px"
+			[product]="product"
+        ></app-product-card>
+      </div>
+    </div>
+  </div>
+</div>

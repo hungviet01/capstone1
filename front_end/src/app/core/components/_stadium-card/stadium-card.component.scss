@@ -1,0 +1,18 @@
+* {
+    font-size: 14px;
+}
+
+.card {
+    min-height: 300px;
+    box-shadow: 0 0 1rem rgb(0 0 0 / 15%) !important;
+}
+
+.stadium-name {
+    line-height: 18px;
+    font-size: 15px;
+}
+
+.price {
+    font-weight: bold;
+    color: var(--button-background);
+}

@@ -1,0 +1,28 @@
+<div>
+    <form [formGroup]="formGroup" (submit)="submit()" class="row d-flex flex-wrap gap-2">
+        <ng-select
+            class="col-md-2 px-0"
+            placeholder="Chọn Tỉnh/thành phố"
+            bindLabel="name"
+            bindValue="id"
+            formControlName="provinceId"
+
+            [items]="provinceList"
+        ></ng-select>
+
+        <ng-select
+            class="col-md-2 px-0"
+            placeholder="Chọn Quận/Huyện"
+            bindLabel="name"
+            bindValue="id"
+            formControlName="districtId"
+
+            [items]="districtList"
+        ></ng-select>
+
+        
+        <input class="col-md-4 nice-input " placeholder="Nhập tên sân..." formControlName="name"/>
+        <button class="col-md-1">Tìm kiếm</button>
+    </form>
+
+</div>

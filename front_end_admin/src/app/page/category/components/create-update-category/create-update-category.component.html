@@ -1,0 +1,27 @@
+<div>
+    <div class="d-flex justify-content-between">
+        <h2 mat-dialog-title *ngIf="!data">Thêm mới danh mục</h2>
+        <h2 mat-dialog-title *ngIf="data">Cập nhật danh mục</h2>
+        <span class="time-close" (click)="onClose(null)">&times;</span>
+    </div>
+
+    <form [formGroup]="formGroup" (submit)="submit()">
+
+        <mat-dialog-content class="d-flex flex-column gap-20">
+            <div>
+                <label class="required">Tên danh mục</label>
+                <input placeholder="Nhập tên danh mục" formControlName="name" class="form-control" />
+                <div *ngIf="(getControl.name.dirty || getControl.name.touched) && getControl.name.invalid">
+                    <div *ngIf="getControl.name.errors.required" class="error-validate">
+                        Tên danh mục không được trống
+                    </div>
+                </div>
+            </div>
+        </mat-dialog-content>
+        
+        <mat-dialog-actions align="center">
+            <button type="button" class="btn-close mr-2" (click)="onClose(null)">Hủy bỏ</button>
+            <button class="btn-primary">Lưu lại</button>
+        </mat-dialog-actions>
+    </form>
+</div>

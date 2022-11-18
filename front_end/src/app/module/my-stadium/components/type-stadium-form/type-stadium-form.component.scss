@@ -1,0 +1,21 @@
+.parent-form {
+    position: relative;
+
+    &:hover {
+        > .close {
+            position: absolute;
+            top: -12px;
+            right: 5px;
+            width: 30px;
+            height: 30px;
+            display: flex !important;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+        }
+    }
+
+    form {
+        border: 1px solid var(--color-border);
+    }
+}

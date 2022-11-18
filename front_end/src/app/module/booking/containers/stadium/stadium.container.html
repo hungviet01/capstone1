@@ -1,0 +1,17 @@
+<div style="background: #fafafa;">
+    <div class="container">
+        <div>
+            <div class="row mt-3 flex-column flex-md-row d-flex justify-content-between align-items-center">
+                <div class="col-md-2 col-12 d-flex d-md-block justify-content-center">
+                    <h2 class="label-card">Sân bóng</h2>
+                </div>
+                <app-booking-form-search class="col-md-10 col-12" (search)="ngOnSearch($event)"></app-booking-form-search>
+            </div>
+            <app-list-stadium-container [stadiumList]="stadiumList"></app-list-stadium-container>
+        </div>
+        <app-pagination 
+            [paginator]="paginator"
+            (paginate)="ngOnSearch()"
+        ></app-pagination>
+    </div>
+</div>

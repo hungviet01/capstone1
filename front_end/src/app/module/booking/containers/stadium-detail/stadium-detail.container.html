@@ -1,0 +1,118 @@
+<div *ngIf="stadium">
+    <div class="position-relative" style="height: 400px;">
+        <img class="w-100 h-100" [src]="stadium.avatar | safe:'resourceUrl'" />
+        <div class="bg-dark position-absolute top-0 start-0 w-100 h-100" style="opacity: .7;"></div>
+        <div class="container position-absolute bottom-0 start-50 translate-middle-x mb-5 info-box">
+            <h1>{{ stadium.name }}</h1>
+            <div class="d-flex flex-column gap-2">
+                <div class="d-flex gap-3">
+                    <i class="fas fa-map-marker-alt text-white"></i>
+                    <span class="text-white">{{ stadium.address }}</span>
+                </div>
+                <div class="d-flex gap-2">
+                    <i class="fas fa-star text-white"></i>
+                    <span>Chưa có đánh giá</span>
+                </div>
+                <div class="d-flex" *ngIf="isOwnerStadium">
+                    <i class="fas fa-user text-white"></i>
+                    <a style="margin-left: 12px; color: #FF9727" [routerLink]="['/my-stadium','update-stadium', stadium.id]">Chỉnh sửa</a>
+                </div>
+                <div class="d-flex" *ngIf="isOwnerStadium">
+                    <i class="fas fa-trash-alt text-white cursor-pointer"></i>
+                    <span style="margin-left: 12px;" (click)="deleteStadium()">Xoá</span>
+                </div>
+                <div class="d-flex justify-content-end gap-2">
+                    <button>Liên hệ</button>
+                    <button (click)="openBattle()">Set kèo</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-2">
+        <div class="row flex-column-reverse flex-lg-row">
+            <div class="col-lg-7 col-md-12">
+                <ng-container
+                    [ngTemplateOutlet]="detail"
+                ></ng-container>
+            </div>
+            <div class="col-lg-5 col-md-12" style="height: fit-content;">
+                <div class="box">
+                    <span>Liên hệ</span>
+                    <app-contact-form class="w-100"></app-contact-form>
+                </div>
+            </div>
+        </div>
+        <div class="box">
+            <span>Yêu cầu</span>
+            <app-pending-request
+                style="height: 400px;"
+                class="w-100"
+                [showAction]="isOwnerStadium"
+                [stadiumRequest]="stadiumRequest$ | async"
+            ></app-pending-request>
+        </div>
+        <div class="box">
+            <span>Các sân tại khu vực: {{ stadium.provinceName }}</span>
+            <app-list-stadium-container 
+                class="w-100"
+                [stadiumList]="stadiumByProvince$ | async"
+            ></app-list-stadium-container>
+        </div>
+    </div>
+</div>
+
+<ng-template #detail>
+
+    <div class="box description">
+        <span>MÔ TẢ - THÔNG TIN KÈM THEO</span>
+        <div [class.hidden]="!isReadMore" class="w-100" [innerHTML]="stadium.description | safe:'html'">
+        </div>
+        <button class="read-more" *ngIf="!isReadMore" (click)="isReadMore = true">
+            Xem thêm
+            <i class="fas fa-chevron-down"></i>
+        </button>
+
+        <button class="read-less" *ngIf="isReadMore" (click)="isReadMore = false">
+            Thu gọn
+            <i class="fas fa-chevron-up"></i>
+        </button>
+    </div>
+
+    <div class="box">
+        <span>Hình ảnh</span>
+        <div class="image-container">
+            <img 
+                *ngFor="let stadiumImage of (stadiumImage$ | async)" 
+                [src]="stadiumImage.image | safe:'resourceUrl'" 
+            />
+        </div>
+    </div>
+
+    <div class="box">
+        <span>Tiện ích</span>
+        <div class="option-container row">
+            <div
+                *ngFor="let stadiumOption of (stadiumOption$ | async)"
+                class="col-md-4 col-6">
+                <span class="w-100 d-block" [innerText]="stadiumOption.name"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="box">
+        <span class="fw-bold mb-2">Loại sân</span>
+        <app-stadium-type
+            style="height: 300px;"
+            class="w-100"
+            [rows]="(stadiumDetail$ | async) || []"
+        ></app-stadium-type>
+    </div>
+
+    <div class="box">
+        <span class="fw-bold">Tìm sân trống</span>
+        <app-find-empty-form 
+            class="w-100"
+            [stadium]="stadium"
+        ></app-find-empty-form>
+    </div>
+</ng-template>

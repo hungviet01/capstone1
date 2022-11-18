@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div>
+        <i>Dear [[${param0}]],</i>
+        <div>
+            <div>Chúng tôi đã nhận được yêu cầu từ chối từ phí chủ sân <b>[[${param1}]]</b></div>
+            <div th:if="param2 == null">Lý do: Đã có người đặt sân trước đó</div>
+            <div th:if="param2 != null">Lý do: [[${param2}]]</div>
+        </div>
+        <div>Trân trọng</div>
+    </div>
+</body>
+</html>

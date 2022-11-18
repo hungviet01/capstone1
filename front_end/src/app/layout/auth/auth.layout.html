@@ -1,0 +1,22 @@
+<div class="wrapper d-flex justify-content-between vw-100 vh-100 position-relative">
+    <div class="col-md-4 p-3 bg-white">
+        <div class="d-flex flex-column gap-2">
+            <a class="h4 d-flex align-items-center gap-2 mb-0" [routerLink]="['stadium']">
+                <img src="favicon.ico" style="width: 20px; height: 20px;" />
+                <span class="title">FFMS</span>
+            </a>
+            <span class="h3">Chào mừng bạn quay lại</span>
+        </div>
+        <router-outlet></router-outlet>
+    </div>
+    <div class="col-md-8 d-flex flex-column align-items-center justify-content-center position-relative">
+        <div class="position-absolute top-0 start-0 end-0 bottom-0 bg-dark" style="opacity: .5;"></div>
+        <div class="position-absolute top-50 start-50 translate-middle text-center d-flex flex-column align-items-center gap-2" style="z-index: 50;">
+            <a class="h4 d-flex align-items-center gap-2 mb-0">
+                <img src="favicon.ico" style="width: 20px; height: 20px;" />
+                <span class="title">FFMS</span>
+            </a>
+            <span class="text-white">Kết nối với đồng đội và cộng đồng những người chơi bóng đá khắp thế giới. Đăng thông tin trận đấu và bắt cặp/tìm đối dễ dàng. Nhận xét đối thủ sau mỗi trận. Với Sporta, không còn tình trạng chênh lệch trình độ hay chơi xấu.</span>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,70 @@
+<div>
+    <div class="d-flex flex-column gap-2">
+        <ng-container
+            *ngFor="let control of formGroups.controls; let i = index"
+            [ngTemplateOutlet]="form"
+            [ngTemplateOutletContext]="{formGroup: control, index: i}"
+        ></ng-container>
+    </div>
+    <button class="ms-2 mt-2" (click)="addTypeForm()">Thêm</button>
+</div>
+
+<ng-template #form let-formGroup="formGroup" let-index="index">
+    <div class="parent-form">
+        <form [formGroup]="formGroup" class="p-2">
+            <div class="d-flex flex-column gap-2">
+                <div class="d-flex flex-column">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <input formControlName="name" class="nice-input w-100" placeholder="Nhập loại sân bóng" />
+                        </div>
+                        <div class="col-md-4 ps-0">
+                            <input formControlName="quantity" class="nice-input w-100" placeholder="Số lượng" />
+                        </div>
+                    </div>
+                    <div *ngIf="(formGroup.get('name').dirty || formGroup.get('name').touched) && formGroup.get('name').invalid">
+                        <div *ngIf="formGroup.get('name').errors.required" class="error-validate">
+                            Loại sân không được trống
+                        </div>
+                    </div>
+                    <div *ngIf="(formGroup.get('quantity').dirty || formGroup.get('quantity').touched) && formGroup.get('quantity').invalid">
+                        <div *ngIf="formGroup.get('quantity').errors.required" class="error-validate">
+                            Số lượng không được trống
+                        </div>
+                        <div *ngIf="formGroup.get('quantity').errors.pattern" class="error-validate">
+                            Số lượng không đúng định dạng số
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex flex-column gap-2 px-3" formArrayName="types">
+                    <div *ngFor="let type of getTypes(formGroup).controls; index as i" [formGroupName]="i" class="d-flex flex-column gap-2">
+                        <div class="col-md-12 d-flex gap-2 align-items-center"> 
+                            <label style="min-width: 70px;" class="required">Thời gian</label>
+                            <div class="row flex-grow-1">
+                                <div class="col-md-6">
+                                    <input type="time" class="nice-input w-100" formControlName="startTime" />
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="time" class="nice-input w-100 " formControlName="endTime" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 d-flex gap-2 align-items-center"> 
+                            <label style="min-width: 77px;" class="required">Giá tiền</label>                        
+                            <input class="nice-input flex-grow-1" formControlName="price" />
+                        </div>
+                        <button class="bg-danger" (click)="removeTime(formGroup, i)">
+                            <i class="fas fa-trash text-white me-2"></i>
+                            <span>Xóa</span>
+                        </button>
+                        <div *ngIf="i != getTypes(formGroup).controls.length - 1" class="separator mb-2"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-end mt-2 px-3">
+                <button  (click)="addTime(formGroup)">Thêm thời gian</button>
+            </div>
+        </form>
+        <div class="close time-close d-none bg-danger" (click)="removeTypeForm(index)">&times;</div>
+    </div>
+</ng-template>

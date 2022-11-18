@@ -1,0 +1,76 @@
+<div>
+    <div class="modal-header h4">Gửi phản hổi tới ADMIN</div>
+    <div class="modal-body">
+        <form *ngIf="formGroup" [formGroup]="formGroup" class="d-flex flex-column gap-2">
+            <div class="d-flex flex-column">
+                <label class="required">Họ và tên</label>
+                <input class="nice-input" placeholder="Nhập họ và tên" formControlName="fullName" />
+                <ng-container
+                    [ngTemplateOutlet]="error"
+                    [ngTemplateOutletContext]="{
+                        controlName: 'fullName',
+                        messageRequired: 'Họ và tên không được để trống'
+                    }"
+                ></ng-container>
+            </div>
+
+            <div class="d-flex flex-column">
+                <label class="required">Email</label>
+                <input class="nice-input" placeholder="Nhập email" formControlName="email" />
+                <ng-container
+                    [ngTemplateOutlet]="error"
+                    [ngTemplateOutletContext]="{
+                        controlName: 'email',
+                        messageRequired: 'Email không được để trống',
+                        messageEmail: 'Email không đúng định dạng'
+                    }"
+                ></ng-container>
+            </div>
+
+            <div class="d-flex flex-column">
+                <label class="required">Số điện thoại</label>
+                <input class="nice-input" placeholder="Nhập số điện thoại" formControlName="phone" />
+                <ng-container
+                    [ngTemplateOutlet]="error"
+                    [ngTemplateOutletContext]="{
+                        controlName: 'phone',
+                        messageRequired: 'Số điện thoại không được để trống',
+                        messagePattern: 'Số điện thoại không đúng định dạng'
+                    }"
+                ></ng-container>
+            </div>
+
+            <div class="d-flex flex-column">
+                <label class="required">Nội dung</label>
+                <textarea class="nice-area pt-1" formControlName="content"></textarea>
+                <ng-container
+                    [ngTemplateOutlet]="error"
+                    [ngTemplateOutletContext]="{
+                        controlName: 'content',
+                        messageRequired: 'Nội dung không được để trống'
+                    }"
+                ></ng-container>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer justify-content-center">
+        <button (click)="submit()">Gửi</button>
+        <button class="cancel" (click)="close()">Hủy bỏ</button>
+    </div>
+</div>
+
+<ng-template #error let-controlName="controlName" let-messageRequired="messageRequired" let-messagePattern="messagePattern" let-messageEmail="messageEmail">
+    <div class="error-validate" *ngIf="formGroup.get(controlName).invalid && (formGroup.get(controlName).dirty || formGroup.get(controlName).touched)">
+        <div *ngIf="formGroup.get(controlName).errors.required">
+            {{ messageRequired }}
+        </div>
+
+        <div *ngIf="formGroup.get(controlName).errors.pattern">
+            {{ messagePattern }}
+        </div>
+
+        <div *ngIf="formGroup.get(controlName).errors.email">
+            {{ messageEmail }}
+        </div>
+    </div>
+</ng-template>

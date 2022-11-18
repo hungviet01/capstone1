@@ -1,0 +1,20 @@
+<div>
+    <span class="cursor-pointer" (click)="showDetail(detail)">Xem chi tiết</span>
+</div>
+
+<ng-template #detail>
+    <div>
+        <div class="modal-header">
+            <span class="h4">Hóa đơn chi tiết</span>
+            <span class="time-close" (click)="ngbModalRef.close()">&times;</span>
+        </div>
+        <div class="modal-body">
+            <app-core-table
+                style="height: 300px;"
+                class="w-100 d-flex"
+                [columns]="columns"
+                [rows]="rowData$ | async"
+            ></app-core-table>
+        </div>
+    </div>
+</ng-template>

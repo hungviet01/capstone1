@@ -1,0 +1,30 @@
+<div>
+    <div class="title-container">
+        <span class="title">DANH SÁCH BÌNH LUẬN</span>
+    </div>
+    <div class="body-container">
+        <app-form-search-comment
+            (search)="doSearch($event)"
+        ></app-form-search-comment>
+        
+        <ag-grid-angular
+            style="width: 100%; height: 500px;"
+            class="mt-4 ag-theme-alpine"
+            [context]="{parent: this}"
+            [columnDefs]="columnDefs"
+            [rowData]="rowData"
+            [headerHeight]="56"
+            [rowHeight]="56"
+            (gridReady)="onGridReady($event)"
+        ></ag-grid-angular>
+
+        <app-pagination
+            [totalRecord]="pagination.totalRecord"
+            [totalPage]="pagination.totalPage"
+            [currentPage]="pagination.currentPage"
+            [dataLength]="pagination.dataLength"
+            [pageSize]="pagination.pageSize"
+            (paginate)="doSearch(null)"
+        ></app-pagination>
+    </div>
+</div>

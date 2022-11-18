@@ -1,0 +1,225 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~ngx-toastr/toastr';
+@import "~bootstrap/dist/css/bootstrap.min";
+@import "~@ng-select/ng-select/themes/default.theme.css";
+@import "ag-grid-community/dist/styles/ag-grid.css";
+@import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+@import "./colors";
+@import "./template";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&family=Source+Sans+Pro:ital,wght@0,200;0,400;0,600;0,700;1,400;1,600&display=swap');
+
+.font-size-30 {
+    font-size: 30px;
+}
+
+.required:after {
+    content: ' *';
+    color: $color-error;
+}
+
+.text {
+    font-size: 12px;
+    font-family: 'Inter' !important;
+    font-style: normal;
+    font-weight: 600;
+}
+
+.error-validate {
+    color: $color-error;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 0 !important;
+}
+
+.gap-20 {
+    gap: 20px !important;
+}
+
+.ng-arrow-wrapper {
+    background: $color-arrow-select-box;
+    border-radius: 4px;
+    margin-right: 5px;
+    padding: 3px;
+    display: flex;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+}
+
+.ng-select-container {
+    height: 40px;
+    color: #333;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    min-height: 36px !important;
+    align-items: center;
+    background-color: white;
+
+    &:after {
+        border-bottom: none !important;
+    }
+
+    .ng-value-container {
+        border-top: none !important;
+        padding-left: 10px !important;
+    }
+}
+
+.ng-dropdown-panel {
+    top: 100%;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border-top-color: #e6e6e6;
+}
+
+.ng-select {
+    padding-bottom: 0 !important;
+}
+
+.time-close {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background: $primary  !important;
+    height: 38px !important;
+    min-width: 105px;
+}
+
+.btn-export {
+    @extend .btn-close;
+    background: #696F8C !important;
+    color: white !important;
+    opacity: 1;
+}
+
+.btn-close {
+    @extend .text;
+
+    background: $bg-close;
+    border-radius: 4px;
+    min-width: 105px;
+    height: 32px;
+    color: $color-close;
+
+    &:focus {
+        box-shadow: none !important;
+    }
+}
+
+.title-container {
+    min-height: 50px;
+    border-bottom: 1px solid $color-border-container;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .title {
+        font-size: 18px;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-family: Inter !important;
+        color: $text-primary;
+    }
+}
+
+.body-container {
+    padding: 10px 0 !important;
+
+    label {
+        color: $text-primary;
+        font-size: 14px;
+        font-family: Inter !important;
+        font-weight: 600;
+    }
+}
+
+.footer-container {
+    border-top: 1px solid $color-border-container;
+    display: flex;
+    justify-content: center;
+}
+
+.ag-header-cell {
+    background-color: $bg-header-cell;
+
+    &-text {
+        font-size: 10px;
+        letter-spacing: .06em;
+        text-transform: uppercase;
+        color: $color-header-grid  !important;
+        font-family: Inter !important;
+    }
+}
+
+.ag-theme-alpine .ag-root-wrapper {
+    border: none !important;
+
+    .ag-header {
+        border: none !important;
+    }
+
+    .ag-row {
+        border: none !important;
+    }
+}
+
+.ag-row-odd {
+    background: #F9FAFC !important;
+}
+
+.ag-row-even {
+    background: white !important;
+}
+
+.ag-row.ag-row-hover {
+    z-index: 1;
+}
+
+.scale-image {
+    transition: all .5s;
+    
+    &:hover {
+        transform: scale(2);
+        transform-origin: -20px 20px;
+    }
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #EDEFF5;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #C1C4D6;
+    border-radius: 100px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #a4a7b3;
+}
+
+.form-control {
+    font-size: 14px !important;
+    height: 40px !important;
+}
+
+.ng-placeholder, .ng-option-label {
+    font-size: 14px !important;
+}

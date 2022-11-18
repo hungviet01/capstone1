@@ -1,0 +1,46 @@
+<form [formGroup]="formGroup" (submit)="submit()" class="row flex-column gap-3">
+    <div class="d-flex flex-column">
+        <label class="required">Họ và tên</label>
+        <input class="nice-input" [class.nice-input-error]="isErrorControl('fullName')" placeholder="Nhập họ và tên" formControlName="fullName">
+    </div>
+
+    <div class="d-flex flex-column">
+        <label class="required">Email</label>
+        <input class="nice-input"  [class.nice-input-error]="isErrorControl('email')" placeholder="Nhập email" formControlName="email"/>
+    </div>
+
+    <div class="d-flex flex-column">
+        <label class="required">Số ĐT</label>
+        <input class="nice-input"  [class.nice-input-error]="isErrorControl('phone')" placeholder="Nhập số điện thoại" formControlName="phone" />
+    </div>
+
+    <div class="d-flex flex-column">
+        <label class="required">Tên đăng nhập</label>
+        <input class="nice-input"  [class.nice-input-error]="isErrorControl('username')" placeholder="Nhập tên đăng nhập" formControlName="username" />
+    </div>
+    
+    <div class="d-flex flex-column">
+        <label class="required">Mật khẩu</label>
+        <input type="password" class="nice-input" [class.nice-input-error]="isErrorControl('password')" placeholder="Nhập mật khẩu" formControlName="password" />
+    </div>
+
+    <div class="d-flex gap-2">
+        <div class="d-flex gap-1">
+            <input type="radio" value="USER" formControlName="role"/>
+            <label>Người dùng</label>
+        </div>
+        <div class="d-flex gap-1">
+            <input type="radio" value="OWNER_STADIUM" name="role" formControlName="role" />
+            <label>Chủ sân</label>
+        </div>
+    </div>
+
+    <div>
+        <button class="w-100">Đăng ký</button>
+    </div>
+
+    <div class="d-flex justify-content-end">
+        <a [routerLink]="['/auth', 'login']">Đã có tài khoản?</a>
+    </div>
+
+</form>

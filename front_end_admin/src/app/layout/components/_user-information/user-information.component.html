@@ -1,0 +1,49 @@
+<div id="profile" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="d-flex justify-content-between w-100">
+                    <h4 class="modal-title">Thông tin người dùng</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+            
+            <form>
+                <div class="modal-body">
+                    <div>
+                        <label for="username">Tên đăng nhập</label>
+                        <input id="username" class="form-control" name="username" value="${sessionScope.USER_LOGGED_IN.username}" readonly/>
+                    </div>
+
+                    <div>
+                        <label for="fullname">Tên đầy đủ</label>
+                        <input id="fullname" class="form-control" name="fullName" value="${sessionScope.USER_LOGGED_IN.fullName}" />
+                    </div>
+
+                    <div>
+                        <label for="phone">Số điện thoại</label>
+                        <input id="phone" class="form-control" name="phone" value="${sessionScope.USER_LOGGED_IN.phone}" />
+                    </div>
+
+                    <div>
+                        <label for="address">Địa chỉ</label>
+                        <input id="address" class="form-control" name="address" value="${sessionScope.USER_LOGGED_IN.address}" />
+                    </div>
+
+                    <div>
+                        <label for="password">Mật khẩu</label>
+                        <input type="password" id="password" class="form-control" name="password" value="${sessionScope.USER_LOGGED_IN.password}" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="d-flex justify-content-center w-100">
+                        <button type="submit" class="btn btn-primary mr-2" style="padding: 0.375rem 0.75rem; border-radius: 4px">Lưu lại</button>
+                        <button type="button" class="btn btn-secondary"data-dismiss="modal">Đóng</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

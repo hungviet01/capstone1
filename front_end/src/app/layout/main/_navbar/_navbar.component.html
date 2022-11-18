@@ -1,0 +1,9 @@
+<ul class="d-flex gap-4 ps-0 mb-0" [style.flex-direction]="layout">
+    <ng-container *ngFor="let m of menu" >
+        <li *ngIf="m.roles.includes(role)">
+            <a class="gap-1 text-white" [routerLink]="m.link" [routerLinkActive]="'active-link'">
+                <span>{{ m.name }}</span>
+            </a>
+        </li>
+    </ng-container>
+</ul>

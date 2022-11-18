@@ -1,0 +1,23 @@
+<div>
+    <form class="d-flex flex-column gap-3" [formGroup]="formGroup" (submit)="submit()">
+        <div class="row">
+            <div class="col-6">
+                <input class="nice-input" type="date" formControlName="startDate"/>
+            </div>
+            <div class="col-6">
+                <input class="nice-input" type="date" formControlName="endDate"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <input class="nice-input" type="time" formControlName="startTime"/>
+            </div>
+            <div class="col-6">
+                <input class="nice-input" type="time" formControlName="endTime"/>
+            </div>
+        </div>
+        <div class="col-12">
+            <button class="w-100">Tìm sân</button>
+        </div>
+    </form>
+</div>

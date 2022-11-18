@@ -1,0 +1,24 @@
+<form [formGroup]="formGroup" (submit)="doSearch()" class="d-flex">
+    <div class="col-md-3">
+        <label>Đơn hàng</label>
+        <input placeholder="Nhập mã đơn hàng" formControlName="id" class="form-control"/>
+    </div>
+
+    <div class="col-md-3">
+        <label>Ngày mua</label>
+        <input type="date" formControlName="createdDate" class="form-control" />
+    </div>
+
+    <div class="col-md-3">
+        <label>Trạng thái</label>
+        <ng-select
+            [items]="status"
+            bindLabel="label"
+            bindValue="id"
+            placeholder="Chọn trạng thái đơn hàng"
+            formControlName="status"
+        ></ng-select>
+    </div>
+
+    <button class="btn-primary align-self-end">Tìm kiếm</button>
+</form>

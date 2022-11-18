@@ -1,0 +1,27 @@
+<div class="d-flex gap-5">
+    <div *ngIf="!hiddenUploadFileButton" #inputerBox>
+        <label *ngIf="!inputerElement" [for]="unique">Tải file</label>
+    </div>
+    <input #inputer [id]="unique" type="file" class="d-none" [multiple]="multiple" (change)="readURL($event)" />
+
+    <div *ngIf="previewImage && imagePreviewUrls.length && !multiple" class="preview-file w-100">
+        <ng-container
+            [ngTemplateOutlet]="image"
+            [ngTemplateOutletContext]="{size: {height: '400px', width: '100%'}}"
+        ></ng-container>
+    </div>
+
+    <div *ngIf="previewImage && multiple" class="d-flex gap-2 pb-2 overflow-auto" [style.flex-direction]="layout">
+        <ng-container
+            [ngTemplateOutlet]="image"
+            [ngTemplateOutletContext]="{size: {height: '100px', width: '100px'}}"
+        ></ng-container>
+    </div>
+</div>
+
+<ng-template #image let-size="size">
+    <div *ngFor="let url of imagePreviewUrls; let i = index" class="position-relative">
+        <img [src]="url" alt="Preview Image" style="border-radius: 8px;" [style.width]="size.width" [style.height]="size.height" />
+        <span class="position-absolute time-close" (click)="removePreviewImage(i)">&times;</span>
+    </div>
+</ng-template>
